@@ -2,6 +2,7 @@
 
 # decide based on the current state
 def decide(state, alpha, beta, maxTurn):
+    # determining final state
     if (sum(state) == 1 and maxTurn) or (sum(state) == 0 and not maxTurn): return (-1, [state])
     if (sum(state) == 1 and not maxTurn) or (sum(state) == 0 and maxTurn): return (1, [state])
     
@@ -9,11 +10,14 @@ def decide(state, alpha, beta, maxTurn):
         res_max = -float('inf')
         res = None
         for i in find_next(state):
+            # recursively search for the next possible move
             val, temp = decide(i, alpha, beta, not maxTurn)
             if val > res_max:
                 res_max = val
                 res = temp
+            # update the upper bound
             alpha = max(alpha, val)
+            # pruning
             if alpha >= beta:
                 break
         return res_max, [state] + res
@@ -30,6 +34,7 @@ def decide(state, alpha, beta, maxTurn):
                 break
         return res_min, [state] + res
     
+# find all possible next moves
 def find_next(state):
     visited = set()
     res = []
@@ -39,6 +44,7 @@ def find_next(state):
             temp = list(state[:])
             temp[i] -= m
             
+            # check if the stage already exists
             rearranged = tuple(sorted(temp))
             if rearranged not in visited:
                 res.append(temp)

@@ -1,6 +1,7 @@
 # main program for creating the game board
 from solution_search import decide
 
+# main game board class
 class Board(object):
     def __init__(self, board):
         self.board = board
@@ -11,6 +12,7 @@ class Board(object):
     def computerUpdate(self):
         self.board = decide(self.board, -float('inf'), float('inf'), True)[1][1]
 
+# check whether user input is valid
 def isValid(remove, board):
     if not remove or len(remove) != 2: return False
     if remove[0] > 0 and remove[1] >= 0 and remove[1] < len(board) and remove[0] <= board[remove[1]]:
@@ -21,6 +23,7 @@ if __name__ == "__main__":
 
     print("Starting Nim!")
 
+    # initializing size of the game board
     ele = int(input("Input the number of piles "))
     lis = []
 
@@ -38,6 +41,7 @@ if __name__ == "__main__":
        
         print("Pile state %s" % (game.board))
 
+        # player's turn
         player_remove = None
 
         while not isValid(player_remove, game.board):
