@@ -42,9 +42,11 @@ if __name__ == "__main__":
         print("Pile state %s" % (game.board))
 
         # player's turn
-        player_remove = None
+        user = str(input("Player turn: "))
+        player_remove = [int(i) for i in user.split(' ')]
 
         while not isValid(player_remove, game.board):
+            print("Invalid move! Please input again.")
             user = str(input("Player turn: "))
             player_remove = [int(i) for i in user.split(' ')]
 
