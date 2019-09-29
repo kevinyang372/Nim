@@ -13,13 +13,12 @@ The program is divided into two major sections. `main.py` controls the overall f
 * The overall gameflow is defined under `if __name__ == "__main__"`, including:
   * Define board attributes (number of piles / number of sticks in each pile)
   * Iteratively update the board with player and computer moves
-  * Capture the winning condition and present result
-* `Board` class: controls updating of the current game board (including both player and computer)
+  * Capture the winning condition
 
 `solution_search.py`
 * The solution search section is divided into two steps:
   * Generate all possible next moves from the current board
-  * Use minimax algorithm to select the best moves by exhaust searching the game tree
+  * Use minimax algorithm to select the best move by searching the game tree with pruning
 
 
 ## Example
